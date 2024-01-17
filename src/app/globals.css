@@ -1,15 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.body-backgroud {
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* .body-backgroud {
   @apply bg-purple-900;
 }
 
 .btn-primary {
   @apply flex items-center gap-2 rounded-lg py-2.5 px-3 bg-gradient-to-l from-pink-500 to-purple-600 text-gray-100 text-small-semibold max-md:hidden
 }
+.btn-secondary {
+  @apply flex items-center gap-2 rounded-lg py-2.5 px-3 bg-gradient-to-l from-pink-500 to-purple-300 text-gray-300 text-small-semibold max-md:hidden
+}
+
+.bg-col1
+{
+  @apply bg-purple-400;
+} */
+
+
 
 .btn-secondary {
   @apply flex items-center gap-2 rounded-lg py-2.5 px-3 bg-gradient-to-l from-pink-500 to-purple-100 text-gray-100 text-small-semibold max-md:hidden
 }
+
