@@ -1,19 +1,20 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaAddressBook, FaHouseChimney, FaBlog } from "react-icons/fa6";
+
 
 
 export const sideLinks =[
     {
-        icon: <FontAwesomeIcon icon="fa-solid fa-house" />,
+        icon: <FaHouseChimney/>,
         route: "/",
         label: "Home",
       },
       {
-        icon: <FontAwesomeIcon icon="fa-solid fa-house" />,
+        icon: <FaAddressBook/>,
         route: "/about",
         label: "About",
       },
       {
-        icon: <FontAwesomeIcon icon="fa-solid fa-house" />,
+        icon: <FaBlog/>,
         route: "/blog",
         label: "Blog",
       },
