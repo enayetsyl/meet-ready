@@ -4,10 +4,12 @@ import logo from "@/assets/meetReadyLogo.png";
 import mobileLogo from "@/assets/meetReadyLogoMobile.png";
 import Link from "next/link";
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import userLogo from "@/assets/userLogo.png";
 
 const Navbar = () => {
+  const user = false;
   return (
-    <div className="navbar bg-black bg-opacity-30 text-black">
+    <div className="navbar bg-purple-200  text-black">
       {/* navbar start logo */}
       <div className="navbar-start ml-2">
         <Link href={"/"} className="md:flex hidden">
@@ -21,7 +23,7 @@ const Navbar = () => {
       {/* navbar end  drawer search-bar  login btn*/}
       <div className="navbar-end md:space-x-5 space-x-2 mr-3">
         <div className="flex justify-center items-center relative">
-          <FaMagnifyingGlass className="text-xl absolute left-2 text-gray-600"/>
+          <FaMagnifyingGlass className="text-xl absolute left-2 text-gray-600" />
           <input
             type="text"
             placeholder="Search here"
@@ -29,17 +31,62 @@ const Navbar = () => {
           />
         </div>
 
-        <Link href={"/login"}>
-          <button className="btn hidden md:hidden glass text-lg bg-purple-700 text-white hover:bg-purple-800 lg:flex">
-            Login
-          </button>
-        </Link>
+        {/* user avatar */}
+        {user ? (
+          <>
+            <div className="dropdown dropdown-end hidden lg:flex">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <Image
+                    src={userLogo}
+                    alt="user Logo"
+                    width={"50"}
+                    height={"50"}
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <a className="font-semibold">Ash Ketchum</a>
+                </li>
+                <li>
+                  <a className="font-semibold">ash@ketchum.com</a>
+                </li>
+                <hr />
+                <li>
+                  <Link href={"/editProfile"}>Edit Profile</Link>
+                </li>
+                <li>
+                  <a>Logout</a>
+                </li>
+              </ul>
+            </div>
+          </>
+        ) : (
+          <>
+            <Link href={"/login"}>
+              <button className="btn hidden md:hidden glass text-lg bg-purple-700 text-white hover:bg-purple-800 lg:flex">
+                Login
+              </button>
+            </Link>
+          </>
+        )}
 
         <div className="flex lg:hidden">
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content">
             {/* Page content here */}
-            <label htmlFor="my-drawer" className="btn glass bg-purple-800 text-white">
+            <label
+              htmlFor="my-drawer"
+              className="btn glass bg-purple-800 text-white"
+            >
               {" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +103,7 @@ const Navbar = () => {
               </svg>
             </label>
           </div>
-          <div className="drawer-side">
+          <div className="drawer-side z-50">
             <label
               htmlFor="my-drawer"
               aria-label="close sidebar"
@@ -65,12 +112,40 @@ const Navbar = () => {
             <ul className="menu p-4 w-72 min-h-full text-lg font-semibold bg-base-200 text-base-content">
               {/* Sidebar content here */}
               <li className="border-b">
-                <Link href={'/'}>Home</Link>
+                <Link href={"/"}>Home</Link>
               </li>
-              <li className="border-b">
-                <Link href={'/login'}>Log In</Link>
-              </li>
-             
+              {user ? (
+                <>
+                  <li className="border rounded-lg my-3">
+                    <div className="flex justify-start items-center">
+                      <div className="w-10 rounded-full">
+                        <Image
+                          src={userLogo}
+                          alt="user Logo"
+                          width={"50"}
+                          height={"50"}
+                        />
+                      </div>
+                      <a>Ash Ketchum</a>
+                    </div>
+                    <a>ash@ketchum.com</a>
+                  </li>
+
+                  <hr />
+                  <li className="border-b">
+                    <Link href={"/editProfile"}>Edit Profile</Link>
+                  </li>
+                  <li className="border-b">
+                    <a>Logout</a>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="border-b">
+                    <Link href={"/login"}>Log In</Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
