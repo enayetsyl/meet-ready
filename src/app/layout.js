@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import LeftSideBer from "@/components/LeftSideBer/LeftSideBer";
 import Container from "@/components/container/Container";
 import Footer from "@/components/Footer/Footer";
+import BottomBar from "@/components/BottomBar/BottomBar";
 
 export const metadata = {
   title: "MeetReady",
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
             <LeftSideBer />
             <Container>{children}</Container>
           </div>
+          <BottomBar/>
           <Footer />
         </main>
       </body>
