@@ -1,9 +1,11 @@
+"use client"
 import React from 'react'
+import Menu from '../Shared/Menu'
 
 const LeftSideBer = () => {
   return (
-    <div>
-      <h1>LeftSide ber</h1>
+    <div className='h-screen left-0 top-0 sticky overflow-auto px-10 py-6 flex flex-col gap-3 max-md:hidden custom-scrolbar'>
+      <Menu/>
     </div>
   )
 }

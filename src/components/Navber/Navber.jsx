@@ -8,4 +8,4 @@ const Navber = () => {
   )
 }
 
-export default Navber
+export default Navber;
