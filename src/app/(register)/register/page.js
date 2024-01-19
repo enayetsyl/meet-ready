@@ -47,13 +47,14 @@ const login = () => {
                   required
                 />
               </div>
+              
               <div class="">
                 <label class="block text-gray-700">Password</label>
                 <input
                   type="password"
                   name=""
                   id=""
-                  placeholder="Enter Password"
+                  placeholder="Enter Your Password"
                   minlength="6"
                   class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none"
@@ -61,25 +62,12 @@ const login = () => {
                 />
               </div>
               <div class="">
-                <label class="block text-gray-700">Password</label>
+                <label class="block text-gray-700">Confirm Password</label>
                 <input
                   type="password"
                   name=""
                   id=""
-                  placeholder="Enter Password"
-                  minlength="6"
-                  class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-                focus:bg-white focus:outline-none"
-                  required
-                />
-              </div>
-              <div class="">
-                <label class="block text-gray-700">Password</label>
-                <input
-                  type="password"
-                  name=""
-                  id=""
-                  placeholder="Enter Password"
+                  placeholder="Enter Your Password"
                   minlength="6"
                   class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none"
@@ -87,21 +75,14 @@ const login = () => {
                 />
               </div>
 
-              <div class="text-right mt-2">
-                <a
-                  href="#"
-                  class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700"
-                >
-                  Forgot Password?
-                </a>
-              </div>
+              
 
               <button
                 type="submit"
                 class="w-full block bg-purple-400 hover:bg-purple-500 focus:bg-indigo-400 text-white font-semibold rounded-lg
               px-4 py-3 mt-6"
               >
-                Log In
+                Register
               </button>
             </form>
 
