@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme='light'>
-      <body>
+      <body className="">
         <main className="flex flex-col bg-purple-100">
           <Navbar />
           <div className="flex flex-row">

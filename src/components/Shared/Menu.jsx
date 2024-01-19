@@ -10,7 +10,7 @@ const Menu = () => {
         {sideLinks?.map((link)=>{
             const isActive = pathname === link.route
             return(
-                <Link key={link.label} href={link.route} className={`flex gap-4 justify-start shadow-lg shadow-rose-400 bg-purple-600 rounded-lg py-2 px-4 ${isActive && 'bg-amber-400 shadow-xl animate-bounce shadow-rose-400'}`}>{link.icon} <p className="text-gray-200">{link.label}</p></Link>
+                <Link key={link.label} href={link.route} className={`flex gap-4 justify-start shadow-lg shadow-rose-400 bg-purple-600 rounded-lg py-2 px-4 ${isActive && 'bg-amber-400 shadow-xl shadow-rose-400 animate-bounce border-b-4'}`}>{link.icon} <p className="text-gray-200">{link.label}</p></Link>
 
             )
         })}
