@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import React from "react";
 
-const login = () => {
+const Register = () => {
   return (
     <>
       <section class="flex flex-col md:flex-row h-screen items-center">
@@ -113,4 +113,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Register;
