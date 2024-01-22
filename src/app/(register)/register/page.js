@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import React from "react";
@@ -11,10 +12,11 @@ const Register = () => {
         flex items-center justify-center"
         >
           <div class="w-full h-100">
-            <img
+            <Image src='https://i.ibb.co/T24b18g/meet-Ready-Logo.png' alt="register-image" className="px-12" width={500} height={700}/>
+            {/* <img
               src="https://i.ibb.co/T24b18g/meet-Ready-Logo.png"
               class="px-12"
-            />
+            /> */}
             <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12 text-center">
               Sign Up to get Started
             </h1>
@@ -102,11 +104,12 @@ const Register = () => {
           </div>
         </div>
         <div class="bg-purple-300 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
-          <img
+          <Image height={100} width={100} className="object-cover w-full h-full py-12" alt="second-image" src="https://i.ibb.co/nLK1vKw/12146011-Wavy-Gen-01-Single-07.png"/>
+          {/* <img
             src="https://i.ibb.co/nLK1vKw/12146011-Wavy-Gen-01-Single-07.png"
             alt=""
             class=" w-full h-full object-cover py-12"
-          />
+          /> */}
         </div>
       </section>
     </>
