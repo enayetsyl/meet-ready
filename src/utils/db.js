@@ -1,14 +1,10 @@
 import mongoose from 'mongoose'
 
 const connect = async () => {
-  if(mongoose.connection[0].readyState) return;
+  // if(mongoose.connection[0].readyState) return;
 
   try {
-    await mongoose.connect(
-      process.env.MONGO_URL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      })
+    await mongoose.connect(process.env.MONGO_URL)
       console.log("Mongo connection successfully established.")
   } catch(error){
     throw new Error (
