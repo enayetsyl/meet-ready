@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import React from "react";
 import logo from "@/assets/meetReadyLogo.png";
@@ -5,9 +6,16 @@ import mobileLogo from "@/assets/meetReadyLogoMobile.png";
 import Link from "next/link";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import userLogo from "@/assets/userLogo.png";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { signOut } from "next-auth/react";
 
-const Navbar = () => {
-  const user = false;
+const Navbar = async () => {
+  // const user = false;
+  const session = await getServerSession(authOptions)
+  const user = session?.user;
+  console.log(session)
+  console.log(user)
   return (
     <div className="navbar bg-purple-200  text-black">
       {/* navbar start logo */}
@@ -38,9 +46,9 @@ const Navbar = () => {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost btn-circle avatar"
+                className="btn btn-ghost btn-circle avatar z-10"
               >
-                <div className="w-10 rounded-full">
+                <div className="w-10 rounded-full z-10">
                   <Image
                     src={userLogo}
                     alt="user Logo"
@@ -51,13 +59,13 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 "
               >
                 <li>
-                  <a className="font-semibold">Ash Ketchum</a>
+                  <a className="font-semibold">{user?.name}</a>
                 </li>
                 <li>
-                  <a className="font-semibold">ash@ketchum.com</a>
+                  <a className="font-semibold">{user?.email}</a>
                 </li>
                 <hr />
                 <li>
@@ -126,9 +134,9 @@ const Navbar = () => {
                           height={"50"}
                         />
                       </div>
-                      <a>Ash Ketchum</a>
+                      <a>{user?.name}</a>
                     </div>
-                    <a>ash@ketchum.com</a>
+                    <a>{user?.email}</a>
                   </li>
 
                   <hr />
@@ -136,7 +144,7 @@ const Navbar = () => {
                     <Link href={"/editProfile"}>Edit Profile</Link>
                   </li>
                   <li className="border-b">
-                    <a>Logout</a>
+                    <a >Logout</a>
                   </li>
                 </>
               ) : (
