@@ -1,10 +1,13 @@
 'use client'
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import React from "react";
 
 const Register = () => {
+
+  const router = useRouter()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -31,6 +34,7 @@ const Register = () => {
       }
       if(res.status === 200) {
        console.log('Registration successful')
+       router.push('/')
       }
     } catch (error) {
       console.log(error)

@@ -1,9 +1,13 @@
+'use client'
 import Link from 'next/link'
 import React from 'react'
 import { signIn, useSession } from "next-auth/react"
 import logo from "@/assets/meetReadyLogo.png"
+import { useRouter } from 'next/navigation'
 
 const LoginForm = () => {
+  const router = useRouter()
+
   const handleSubmit = async(e) => {
     e.preventDefault()
     const email = e.target.email.value
@@ -18,6 +22,7 @@ const LoginForm = () => {
     if (response?.error){
       console.log(error)
     }
+    router.replace('/')
   }
   return (
     <section className="flex flex-col md:flex-row h-screen items-center">
