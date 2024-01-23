@@ -1,8 +1,42 @@
+'use client'
+import Image from "next/image";
 import Link from "next/link";
 
 import React from "react";
 
-const login = () => {
+const Register = () => {
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const formData = {name, email, password}
+    console.log(formData)
+
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name, email, password
+        })
+      })
+
+      if(res.status === 400 ){
+        console.log("This email is already registered")
+      }
+      if(res.status === 200) {
+       console.log('Registration successful')
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <>
       <section class="flex flex-col md:flex-row h-screen items-center">
@@ -11,20 +45,21 @@ const login = () => {
         flex items-center justify-center"
         >
           <div class="w-full h-100">
-            <img
+            <Image src='https://i.ibb.co/T24b18g/meet-Ready-Logo.png' alt="register-image" className="px-12" width={500} height={700}/>
+            {/* <img
               src="https://i.ibb.co/T24b18g/meet-Ready-Logo.png"
               class="px-12"
-            />
+            /> */}
             <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12 text-center">
               Sign Up to get Started
             </h1>
 
-            <form class="mt-2" action="#" method="POST">
+            <form class="mt-2" onSubmit={handleSubmit}>
               <div>
                 <label class="block text-gray-700">Name</label>
                 <input
                   type="text"
-                  name=""
+                  name="name"
                   id=""
                   placeholder="Enter Your Name"
                   class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
@@ -37,8 +72,8 @@ const login = () => {
               <div class="">
                 <label class="block text-gray-700">Email</label>
                 <input
-                  type="password"
-                  name=""
+                  type="email"
+                  name="email"
                   id=""
                   placeholder="Enter Your Email"
                   minlength="6"
@@ -52,7 +87,7 @@ const login = () => {
                 <label class="block text-gray-700">Password</label>
                 <input
                   type="password"
-                  name=""
+                  name="password"
                   id=""
                   placeholder="Enter Your Password"
                   minlength="6"
@@ -61,7 +96,7 @@ const login = () => {
                   required
                 />
               </div>
-              <div class="">
+              {/* <div class="">
                 <label class="block text-gray-700">Confirm Password</label>
                 <input
                   type="password"
@@ -73,7 +108,7 @@ const login = () => {
                 focus:bg-white focus:outline-none"
                   required
                 />
-              </div>
+              </div> */}
 
               
 
@@ -102,15 +137,16 @@ const login = () => {
           </div>
         </div>
         <div class="bg-purple-300 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
-          <img
+          <Image height={100} width={100} className="object-cover w-full h-full py-12" alt="second-image" src="https://i.ibb.co/nLK1vKw/12146011-Wavy-Gen-01-Single-07.png"/>
+          {/* <img
             src="https://i.ibb.co/nLK1vKw/12146011-Wavy-Gen-01-Single-07.png"
             alt=""
             class=" w-full h-full object-cover py-12"
-          />
+          /> */}
         </div>
       </section>
     </>
   );
 };
 
-export default login;
+export default Register;
