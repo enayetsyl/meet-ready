@@ -100,7 +100,7 @@ const LoginForm = () => {
             </div>
           </button>
 
-      <p className="mt-8">Need an account?<Link
+      <p className="mt-8">Need an account? <Link
        href="/register" className="text-purple-500 hover:text-purple-700 font-semibold">Create an
               account</Link></p>
 
