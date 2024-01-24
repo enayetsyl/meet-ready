@@ -1,7 +1,14 @@
 "use client";
 import Link from "next/link";
 import { useRef } from "react";
-import { FaClipboard, FaGear, FaPencil, FaShare, FaTrash } from "react-icons/fa6";
+import {
+  FaCheck,
+  FaClipboard,
+  FaGear,
+  FaPencil,
+  FaShare,
+  FaTrash,
+} from "react-icons/fa6";
 
 const EventCard = () => {
   const meetLinkRef = useRef(null);
@@ -21,25 +28,42 @@ const EventCard = () => {
         <div className="absolute right-2 top-2">
           <div className="dropdown dropdown-bottom dropdown-end">
             <div tabIndex={0} role="button" className="btn m-1 btn-sm ">
-              <FaGear/>
+              <FaGear />
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box"
             >
               <li>
-                <Link href={'/'}><p className="flex justify-center items-center gap-2"><FaPencil/>Edit</p></Link>
+                <Link href={"/"}>
+                  <p className="flex font-semibold justify-center items-center gap-2">
+                    <FaPencil />
+                    Edit
+                  </p>
+                </Link>
               </li>
               <li>
-                <Link href={'/'}><p className="flex text-red-500 justify-center items-center gap-2"><FaTrash/>Delete</p></Link>
+                <p className="flex text-green-800 font-semibold justify-center items-center gap-2">
+                  <FaCheck />
+                  Finished
+                </p>
               </li>
-              
+              <li>
+                <p className="flex text-red-500 font-semibold justify-center items-center gap-2">
+                  <FaTrash />
+                  Delete
+                </p>
+              </li>
             </ul>
           </div>
         </div>
         <div>
           <h1 className="text-xl font-medium">This is meeting Title</h1>
           <h1 className="text-base font-extralight">45min, One-on-One</h1>
+          <h1 className="text-base font-extralight">10:00am, 27-01-2024</h1>
+          <h1 className="text-base font-extralight">
+            <span className="font-semibold">Status</span>: Pending
+          </h1>
         </div>
         <hr />
         <div className="flex justify-between">
