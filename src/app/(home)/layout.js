@@ -4,7 +4,7 @@ import LeftSideBer from "@/components/LeftSideBer/LeftSideBer";
 import Container from "@/components/container/Container";
 import Footer from "@/components/Footer/Footer";
 import BottomBar from "@/components/BottomBar/BottomBar";
-
+import { getServerSession } from "next-auth";
 
 export const metadata = {
   title: "MeetReady",
