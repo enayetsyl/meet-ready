@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
     <html lang="en" data-theme="light">
       <body className="flex justify-between bg-purple-100 ">
         <DashNav />
-        <div className="max-w-7xl mx-auto">{children}</div>
+        <div className="max-w-7xl mx-auto min-h-screen">{children}</div>
       </body>
     </html>
   );

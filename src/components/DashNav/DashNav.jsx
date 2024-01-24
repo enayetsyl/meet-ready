@@ -63,7 +63,7 @@ const DashNav = () => {
               "bg-purple-500 "
             }`}
           >
-            <FaLink /> {isClicked ? "" : "Event Types"}
+            <FaLink /> {isClicked ? "" : "Events"}
           </p>
         </Link>
 

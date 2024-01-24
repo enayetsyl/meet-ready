@@ -4,9 +4,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 
 const page = () => {
   return (
-    <div className="flex flex-col justify-start min-h-screen pt-10 space-y-5">
-      <h1 className="text-center text-4xl font-semibold">Events Types</h1>
-
+    <div className="flex flex-col justify-start pt-10 space-y-5">
       <div className="flex justify-center items-center relative border-2">
         <FaMagnifyingGlass className="text-xl absolute left-2 text-gray-600" />
         <input
@@ -16,7 +14,7 @@ const page = () => {
         />
       </div>
 
-      <h1 className="text-xl font-semibold pl-2 border-l-2 border-purple-500">
+      <h1 className="text-2xl font-semibold pl-2 border-l-2 border-purple-500">
         Events
       </h1>
 
