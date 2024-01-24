@@ -21,7 +21,7 @@ const DashNav = () => {
   const pathname = usePathname();
 
   return (
-    <div className={`flex justify-between bg-purple-200 min-h-screen flex-col transition-all duration-300 ${
+    <div className={`flex fixed justify-between bg-purple-200 min-h-screen flex-col transition-all duration-300 ${
         isClicked ? 'w-20' : 'w-64'
       }`}>
       <div className={`p-5 space-y-5 flex ${isClicked && 'justify-center items-center'} flex-col relative`}>
@@ -58,7 +58,7 @@ const DashNav = () => {
 
         <Link href={"/dashboard/events"}>
           <p
-            className={`flex justify-start items-center text-lg font-semibold gap-3 duration-500 btn glass bg-purple-300  ${isClicked && 'btn glass'} ${
+            className={`flex justify-start items-center hover:bg-purple-400 text-lg font-semibold gap-3 duration-500 btn glass bg-purple-300  ${isClicked && 'btn glass'} ${
               pathname === "/dashboard/events" &&
               "bg-purple-500 "
             }`}
@@ -69,7 +69,7 @@ const DashNav = () => {
 
         <Link href={"/dashboard/scheduled-event"}>
           <p
-            className={`flex justify-start items-center text-lg font-semibold gap-3 duration-500 btn glass bg-purple-300  ${isClicked && 'btn glass'} ${
+            className={`flex justify-start items-center hover:bg-purple-400 text-lg font-semibold gap-3 duration-500 btn glass bg-purple-300  ${isClicked && 'btn glass'} ${
               pathname === "/dashboard/scheduled-event" &&
               "bg-purple-500"
             }`}
