@@ -8,7 +8,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
-      <body className="flex justify-between items-center bg-purple-100 ">
+      <body className="flex justify-between bg-purple-100 ">
         <DashNav />
         <div className="max-w-7xl mx-auto">{children}</div>
       </body>
