@@ -69,7 +69,9 @@ const LoginForm = () => {
 
       <hr className="my-6 border-gray-300 w-full"/>
 
-      <button type="button" className="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
+      <button 
+      onClick={() => signIn('google')}
+      type="button" className="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
             <div className="flex items-center justify-center">
             <svg
     xmlns="http://www.w3.org/2000/svg"
