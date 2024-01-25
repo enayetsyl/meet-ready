@@ -6,7 +6,7 @@ import React, { useState } from 'react'
   
 const TwoPersonEvent = () => {
     const[next1,setNext1] =useState(false)
-   
+   const[location,setLocaion]=useState('')
 
 
 const formHandler=(e)=>{
@@ -15,10 +15,12 @@ e.preventDefault()
 
 
 
+const eHandle=(event)=>{
+setLocaion(event.target.value)
+}
 
 
-
-
+console.log(location)
 
 
 
@@ -234,26 +236,37 @@ e.preventDefault()
 
 
 
-
+<div className="">
+     <select className="select select-bordered select-xl w-[150px] my-3 max-w-xs" onChange={eHandle} name="locaion" value={location}>
+  <option disabled selected>Select Your Location</option>
+  <option value={'meet'}>Google Meet</option>
+  <option value={'zoom'}>Zoom</option>
+  
+  
+</select>
+</div>
 
 
 <div className="space-y-5">
-<div className="my-5">
+
+<div className="">
 <label className="label">
     <span className="label-text font-semibold text-black text-xl">Booking Form</span></label>
     <p className="text-sm">Create Your Meeting link</p>
      <input className="w-[380px] outline-none border border-slate-400 h-[40px] rounded-md hover:border-blue-400 p-2" type='text'  name=''></input>
+     {
+      location==='zoom'?<a className="btn bg-blue-500 hover:bg-blue-400 hover:text-white" href="https://zoom.us/" target="blank">Create Zoom Link</a> :''   
+     }
+
+{
+      location==='meet'?<a className="btn bg-blue-500 hover:bg-blue-400 hover:text-white" href="https://meet.google.com/ " target="blank" >Create Meet Link</a> :''   
+     }
      </div>
     
+
+    
      
-  <div className="">
-     <select className="select select-bordered select-xs w-[150px] my-3 max-w-xs">
-  <option disabled selected>Select Your Location</option>
-  <option value={'Google Meet'}>Google Meet</option>
-  <option value={'Zoom'}>Zoom</option>
-  
-</select>
-</div>
+ 
 
 </div>
 
@@ -263,7 +276,7 @@ e.preventDefault()
 
 
 <div className="">
-    <button className="btn" type="submit">Confrim Event</button>
+<button className="border-2 text-xl text-sky-700 w-[230px] rounded-md h-[45px] border-sky-700 hover:before:bg-sky-700 before:w-full before:h-0 hover:before:h-full hover:before:-z-10 hover:before:absolute before:absolute relative before:top-0 hover:before:left-0 before:duration-500 hover:text-white transform origin-top before:block">Confrim Event</button>
 </div>
 
             </form>
