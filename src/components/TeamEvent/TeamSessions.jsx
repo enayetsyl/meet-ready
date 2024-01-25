@@ -1,71 +1,52 @@
 'use client'
 
-import { set } from "mongoose";
-import React, { useState } from 'react'
-
-  
-const TwoPersonEvent = () => {
-    const[next1,setNext1] =useState(false)
-   const[location,setLocaion]=useState('')
+import { useState } from "react";
 
 
-const formHandler=(e)=>{
-e.preventDefault()
-
-const eventTitle=e.target.title.value
-const eventSlug=e.target.slug.value
-const eventDuration=e.target.duration.value
-const eventDay=e.target.days.value
-const fromTime=e.target.fromTime.value
-const toTime=e.target.toTime.value
-const eventdate=e.target.date.value
-const meetingLink=e.target.meetingLink.value
-const eventLocation=e.target.location.value
-
-const oneEventInfo={eventTitle,eventSlug,eventDuration,eventDay,fromTime,toTime,eventdate,meetingLink,eventLocation}
+const TeamSessions = () => {
 
 
+    const[location,setLocaion]=useState('')
 
-console.log(oneEventInfo)
+
+    const formHandler=(e)=>{
+    e.preventDefault()
+   
+    const eventTitle=e.target.title.value
+    const eventSlug=e.target.slug.value
+    const eventDuration=e.target.duration.value
+    const eventDay=e.target.days.value
+    const fromTime=e.target.fromTime.value
+    const toTime=e.target.toTime.value
+    const eventdate=e.target.date.value
+    const meetingLink=e.target.meetingLink.value
+    const eventLocation=e.target.location.value
+    
+const teamEventInfo={eventTitle,eventSlug,eventDuration,eventDays,fromTime,toTime,eventdate,meetingLink,eventLocation}
 
 
 
-}
-
-
-
-const eHandle=(event)=>{
-setLocaion(event.target.value)
-}
+console.log('Team sessions Info',teamEventInfo)
 
 
 
 
 
-
-
+    }
+    
+    
+    
+    const eHandle=(event)=>{
+    setLocaion(event.target.value)
+    }
 
 
 
 
     return (
         <div className="my-10">
-{/* 
-<ul className="steps steps-vertical lg:steps-horizontal">
-  <li className="step step-primary">Register</li>
-  <li className="step step-primary">Choose plan</li>
-  <li className="step">Purchase</li>
-  <li className="step">Receive Product</li>
-</ul> */}
-
-
-
-
-
-
-
-       <form onSubmit={formHandler}>
-            <div className={`${next1?'hidden':'block'} spacey-y-10`}>
+             <form onSubmit={formHandler}>
+            <div className='spacey-y-10'>
                {/* EVENT TITLE */}
 
               <div className=''>
@@ -132,7 +113,7 @@ setLocaion(event.target.value)
              <div className="space-y-4">
                 {/* slect bar */}
                 
-                <select className="select select-bordered select-xs w-[100px] my-3 max-w-xs" name="days" defaultValue='default'>
+                <select className="select select-bordered select-xs w-[100px] my-3 max-w-xs" name="days" defaultValue='default' >
   <option disabled value='default' selected>Select Day</option>
   < option value='saturday'>Saturday</option>
   <option value='sunday'>Sunday</option>
@@ -147,7 +128,7 @@ setLocaion(event.target.value)
               <div className="">
                 {/* avaiable from */}
 
-    <select className="select select-bordered select-xs w-[105px] my-3 max-w-xs" name="fromTime" defaultValue='default'>
+    <select className="select select-bordered select-xs w-[105px] my-3 max-w-xs" defaultValue='default' name="fromTime"  >
   <option disabled value='default' selected>From</option>
   <option value='6:00 AM'>6:00 AM</option>
   <option value='6:00 AM' >6:30 AM</option>
@@ -194,8 +175,8 @@ setLocaion(event.target.value)
  
              <div className="">
                 {/* avaiale to */}
-                <select className="select select-bordered select-xs w-[105px] my-3 max-w-xs" name="toTime" defaultValue='default'>
-  <option disabled value='default'  selected>To</option>
+                <select className="select select-bordered select-xs w-[105px] my-3 max-w-xs" name="toTime" defaultValue='default' >
+  <option disabled  value='default' selected>To</option>
   <option value='6:00 AM'>6:00 AM</option>
   <option value='6:00 AM' >6:30 AM</option>
   <option  value='7:00 AM'>7:00 AM</option>
@@ -256,8 +237,8 @@ setLocaion(event.target.value)
 
 
 <div className="">
-     <select className="select select-bordered select-xl w-[150px] my-3 max-w-xs" onChange={eHandle} name="location" value={location} defaultValue='default'>
-  <option disabled value='default' selected>Select Your Location</option>
+     <select className="select select-bordered select-xl w-[150px] my-3 max-w-xs" onChange={eHandle} name="location" value={location} defaultValue='default' > 
+  <option disabled  value='default' selected>Select Your Location</option>
   <option value={'meet'}>Google Meet</option>
   <option value={'zoom'}>Zoom</option>
   
@@ -304,4 +285,4 @@ setLocaion(event.target.value)
     );
 };
 
-export default TwoPersonEvent;
+export default TeamSessions;
