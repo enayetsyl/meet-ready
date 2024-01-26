@@ -1,7 +1,6 @@
 import connect from "@/utils/db";
 import { NextResponse } from "next/server";
 import CreateEvent from "@/models/CreateEvent";
-import { trace } from "next/dist/trace";
 
 
 export const POST = async (request) =>{

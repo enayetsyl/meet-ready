@@ -11,7 +11,7 @@ const Events = () => {
  
   const getEvent = async()=> {
     const  email = 'infoicpasyl@gmail.com'
-    console.log('eimail', email)
+
    try {
      const res = await fetch(`/api/createEvent?email=${email}`,{
        cache: 'no-store'
@@ -32,42 +32,42 @@ const Events = () => {
     getEvent()
   },[])
 
- const getSingleEvent = async(id)=> {
-  try {
-    const res = await fetch(`/api/createEvent/${id}`,{
-      cache: 'no-store'
-    })
+//  const getSingleEvent = async(id)=> {
+//   try {
+//     const res = await fetch(`/api/createEvent/${id}`,{
+//       cache: 'no-store'
+//     })
 
-    const singleEvent = await res.json()
-    setSingleEventData(singleEvent)
+//     const singleEvent = await res.json()
+//     setSingleEventData(singleEvent)
 
-  } catch (error) {
-    console.log(error)
-  }
- }
+//   } catch (error) {
+//     console.log(error)
+//   }
+//  }
 
- const editEvent = async(id) => {
-  const editedData = {
-    eventName:'Enayet1',
-    eventSlug:'enayet-monday',
-    duration:'2',
-    location:'zoom',
-    schedule:'tue, 10-18',
-    link:'zoom.com/enayet-monday',
-    email:'infoicpasyl@gmail.com',
-  }
-  try {
-    const res = await fetch(`/api/createEvent/${id}`,{
-      method:"PUT",
-      headers:{
-        "Content-type":"application/json"
-      },
-      body: JSON.stringify({editedData})
-    })
-  } catch (error) {
+//  const editEvent = async(id) => {
+//   const editedData = {
+//     eventName:'Enayet1',
+//     eventSlug:'enayet-monday',
+//     duration:'2',
+//     location:'zoom',
+//     schedule:'tue, 10-18',
+//     link:'zoom.com/enayet-monday',
+//     email:'infoicpasyl@gmail.com',
+//   }
+//   try {
+//     const res = await fetch(`/api/createEvent/${id}`,{
+//       method:"PUT",
+//       headers:{
+//         "Content-type":"application/json"
+//       },
+//       body: JSON.stringify({editedData})
+//     })
+//   } catch (error) {
     
-  }
- }
+//   }
+//  }
 
 console.log('get data based on email', eventData)
 console.log('get single data based on id', singleEventData)
@@ -88,7 +88,7 @@ console.log('get single data based on id', singleEventData)
         Events
       </h1>
       
-      <button 
+      {/* <button 
       onClick={getEvent}
       className="btn btn-primary">Get by Email</button>
       <button 
@@ -96,7 +96,7 @@ console.log('get single data based on id', singleEventData)
       className="btn btn-primary">Get Single Event</button>
       <button 
       onClick={() => editEvent('65b277695b8bef36e2bc0b60')}
-      className="btn btn-primary">Edit Single Event</button>
+      className="btn btn-primary">Edit Single Event</button> */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {
           eventData ? (

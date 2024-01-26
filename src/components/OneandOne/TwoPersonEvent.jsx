@@ -48,11 +48,6 @@ try {
   console.log(error)
 }
 
-const testApi = async()=> {
- 
- }
-
-
 }
 
 

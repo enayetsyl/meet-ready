@@ -11,8 +11,8 @@ import {
 } from "react-icons/fa6";
 
 const EventCard = ({event}) => {
-  console.log(event)
-  const {eventTitle, eventDuration, fromTime, eventDate } = event
+  // console.log(event)
+  // const {eventTitle, eventDuration, fromTime, eventDate } = event
   const meetLinkRef = useRef(null);
 
   const copyToClipboard = () => {
@@ -60,9 +60,9 @@ const EventCard = ({event}) => {
           </div>
         </div>
         <div>
-          <h1 className="text-xl font-medium">{eventTitle}</h1>
-          <h1 className="text-base font-extralight">{eventDuration}, One-on-One</h1>
-          <h1 className="text-base font-extralight">{fromTime}, {eventDate}</h1>
+          <h1 className="text-xl font-medium">{event?.eventTitle}</h1>
+          <h1 className="text-base font-extralight">{event?.eventDuration}, One-on-One</h1>
+          <h1 className="text-base font-extralight">{event?.fromTime}, {event?.eventDate}</h1>
           <h1 className="text-base font-extralight">
             <span className="font-semibold">Status</span>: Pending
           </h1>
