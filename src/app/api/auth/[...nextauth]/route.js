@@ -15,24 +15,26 @@ export const authOptions = {
 
       async authorize(credentials) {
         const { email, password } = credentials;
-
         try {
           await connect();
           const user = await User.findOne({ email });
-
+       
           if (!user) {
             return null;
           }
 
           const passwordsMatch = await bcrypt.compare(password, user.password);
-
+          console.log(passwordsMatch)
           if (!passwordsMatch) {
             return null;
           }
-          return user;
+          console.log('user',user)
+          console.log(user.name)
+          return {name: user.name}
 
         } catch (error) {
           console.log("Error: ", error);
+          return null
         }
       },
     }),GoogleProvider({

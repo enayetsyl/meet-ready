@@ -1,62 +1,36 @@
 'use client'
 import EventCard from "@/components/EventCard/EventCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
+
+
 
 const Events = () => {
   const [eventData, setEventData] = useState([])
   const [singleEventData, setSingleEventData] = useState([])
-  const newEventData = {
-    eventName:'Enayet',
-    eventSlug:'enayet-monday',
-    duration:'1',
-    location:'zoom',
-    schedule:'tue, 10-18',
-    link:'zoom.com/enayet-monday',
-    email:'infoicpasyl@gmail.com',
-  }
- const testApi = async()=> {
-  try {
-    const res = await fetch("/api/createEvent", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(
-        newEventData
-      )
-    })
-
-    if(res.status === 500 ){
-      console.log("An error ocurred please try again.")
-    }
-    if(res.status === 200) {
-     console.log('Event successfully created')
+ 
+  const getEvent = async()=> {
+    const  email = 'infoicpasyl@gmail.com'
+    console.log('eimail', email)
+   try {
+     const res = await fetch(`/api/createEvent?email=${email}`,{
+       cache: 'no-store'
+     })
+  
+     if(res.status === 500 ){
+       console.log("An error ocurred please try again.")
      }
-  } catch (error) {
-    console.log(error)
+  
+     const eventData = await res.json()
+     
+     setEventData(eventData.myEvent)
+   } catch (error) {
+     console.log(error)
+   }
   }
- }
-
- const getEvent = async()=> {
-   const  email = 'infoicpasyl@gmail.com'
-   console.log('eimail', email)
-  try {
-    const res = await fetch(`/api/createEvent?email=${email}`,{
-      cache: 'no-store'
-    })
-
-    if(res.status === 500 ){
-      console.log("An error ocurred please try again.")
-    }
-
-    const eventData = await res.json()
-    
-    setEventData(eventData.myEvent)
-  } catch (error) {
-    console.log(error)
-  }
- }
+  useEffect(()=>{
+    getEvent()
+  },[])
 
  const getSingleEvent = async(id)=> {
   try {
@@ -113,9 +87,7 @@ console.log('get single data based on id', singleEventData)
       <h1 className="text-2xl font-semibold pl-2 border-l-2 border-purple-500">
         Events
       </h1>
-      <button 
-      onClick={testApi}
-      className="btn btn-primary">Test</button>
+      
       <button 
       onClick={getEvent}
       className="btn btn-primary">Get by Email</button>
@@ -126,10 +98,17 @@ console.log('get single data based on id', singleEventData)
       onClick={() => editEvent('65b277695b8bef36e2bc0b60')}
       className="btn btn-primary">Edit Single Event</button>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {
+          eventData ? (
+            eventData?.map(event => <EventCard key={event._id} event={event}/>)
+          ) : (
+            <p>No data to show</p>
+          )
+        }
+        {/* <EventCard/>
         <EventCard/>
         <EventCard/>
-        <EventCard/>
-        <EventCard/>
+        <EventCard/> */}
         
       </div>
 

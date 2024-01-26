@@ -9,44 +9,58 @@ const TwoPersonEvent = () => {
    const[location,setLocaion]=useState('')
 
 
-const formHandler=(e)=>{
+const formHandler= async(e)=>{
 e.preventDefault()
-
+const email = 'infoicpasyl@gmail.com'
 const eventTitle=e.target.title.value
 const eventSlug=e.target.slug.value
 const eventDuration=e.target.duration.value
 const eventDay=e.target.days.value
 const fromTime=e.target.fromTime.value
 const toTime=e.target.toTime.value
-const eventdate=e.target.date.value
+const eventDate=e.target.date.value
 const meetingLink=e.target.meetingLink.value
 const eventLocation=e.target.location.value
 
-const oneEventInfo={eventTitle,eventSlug,eventDuration,eventDay,fromTime,toTime,eventdate,meetingLink,eventLocation}
-
+const oneEventInfo={eventTitle,eventSlug,eventDuration,eventDay,fromTime,toTime,eventDate,meetingLink,eventLocation, email}
 
 
 console.log(oneEventInfo)
 
+try {
+  const res = await fetch("/api/createEvent", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(
+      oneEventInfo
+    )
+  })
+
+  if(res.status === 500 ){
+    console.log("An error ocurred please try again.")
+  }
+  if(res.status === 200) {
+   console.log('Event successfully created')
+   }
+} catch (error) {
+  console.log(error)
+}
+
+const testApi = async()=> {
+ 
+ }
 
 
 }
 
 
+// Location google meet/zoom value capture
 
 const eHandle=(event)=>{
 setLocaion(event.target.value)
 }
-
-
-
-
-
-
-
-
-
-
 
     return (
         <div className="my-10">
@@ -58,12 +72,7 @@ setLocaion(event.target.value)
   <li className="step">Receive Product</li>
 </ul> */}
 
-
-
-
-
-
-
+{/* form */}
        <form onSubmit={formHandler}>
             <div className={`${next1?'hidden':'block'} spacey-y-10`}>
                {/* EVENT TITLE */}

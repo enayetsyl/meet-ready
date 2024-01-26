@@ -17,6 +17,8 @@ import mobileLogo from "@/assets/meetReadyLogoMobile.png";
 import { useState } from "react";
 
 const DashNav = () => {
+  
+
   const [isClicked, setIsClicked] = useState(false);
 
   const pathname = usePathname();

@@ -15,7 +15,6 @@ const Navbar = async () => {
   // const user = false;
   const session = await getServerSession(authOptions)
   const user = session?.user;
-  console.log(session)
   console.log(user)
   return (
     <div className="navbar bg-purple-200  text-black">

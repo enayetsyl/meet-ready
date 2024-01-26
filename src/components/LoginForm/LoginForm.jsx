@@ -1,10 +1,10 @@
 'use client'
 import Link from 'next/link'
 import React from 'react'
-import { signIn, useSession } from "next-auth/react"
 import logo from "@/assets/meetReadyLogo.png"
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import { signIn } from 'next-auth/react'
 
 const LoginForm = () => {
   const router = useRouter()
@@ -14,16 +14,23 @@ const LoginForm = () => {
     const email = e.target.email.value
     const password = e.target.password.value
     console.log(email, password)
-    const response = await signIn("credentials", {
-      redirect: false,
-      email,
-      password,
-    })
-
-    if (response?.error){
-      console.log(error)
+   
+    try {
+      const response = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      })
+  
+      console.log(response)
+      if (response?.error){
+        console.log(response.error)
+      }
+      // router.replace('/dashboard')
+    } catch (error) {
+      console.error("Error during sign-in:", error);
     }
-    router.replace('/')
+   
   }
   return (
     <section className="flex flex-col md:flex-row h-screen items-center">
