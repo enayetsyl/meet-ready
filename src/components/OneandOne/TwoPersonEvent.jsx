@@ -12,7 +12,7 @@ const TwoPersonEvent = () => {
 const formHandler= async(e)=>{
 e.preventDefault()
 const email = 'infoicpasyl@gmail.com'
-const eventTitle=e.target.title.value
+const eventTitle=e?.target.title.value
 const eventSlug=e.target.slug.value
 const eventDuration=e.target.duration.value
 const eventDay=e.target.days.value
