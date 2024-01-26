@@ -72,7 +72,7 @@ setLocaion(event.target.value)
               <label className="label">
     <span className="label-text font-semibold text-black text-xl">Event Title</span></label>
     <p className="text-sm">Make A simple Title To Remember Your Event</p>
-     <input className="w-[380px] outline-none border border-slate-400 h-[40px] rounded-md hover:border-blue-400 p-2" type='text' name='title'></input>
+     <input className="w-[380px] outline-none border border-slate-400 h-[40px] rounded-md hover:border-blue-400 p-2" type='text' name='title'/>
 </div>
 
 
@@ -84,7 +84,7 @@ setLocaion(event.target.value)
               <label className="label">
     <span className="label-text font-semibold text-black text-xl">Page Slug</span></label>
     <p className="text-sm">How the URL will look like to the public.</p>
-     <input className="w-[380px] outline-none border border-slate-400 h-[40px] rounded-md hover:border-blue-400 p-2" type='text'  name='slug'></input>
+     <input className="w-[380px] outline-none border border-slate-400 h-[40px] rounded-md hover:border-blue-400 p-2" type='text'  name='slug'/>
      <p>http://localhost:3000/dashboard/events</p>
 </div>
 
@@ -105,7 +105,7 @@ setLocaion(event.target.value)
     <span className="label-text font-semibold text-black text-xl">Duration (minutes)</span></label>
     <p className="text-sm">Setup the duration, capacity, and optional pricing of your meetings.</p>
     <select defaultValue='default' name="duration"   className="select select-bordered w-full ">
-  <option disabled value='default'>Selete Duration</option>
+  <option disabled value='default'>Select Duration</option>
   <option value="10 minutes">10 minutes</option>
   <option value="15 minutes ">15 minutes</option>
   <option value="20 minutes">20 minutes</option>
@@ -234,11 +234,7 @@ setLocaion(event.target.value)
   <option value='11:30 PM' >11:30 PM</option>
   <option value='12:00 AM' >12:00 AM</option>
 </select>
-
-
              </div>
-
-
              </div> 
 
 
@@ -250,7 +246,7 @@ setLocaion(event.target.value)
               <label className="label">
     <span className="label-text font-semibold text-black text-xl">Pick Your Event Day</span></label>
     <p className="text-sm">Make some Time For Your Meeting</p>
-     <input className="w-[380px] outline-none border border-slate-400 h-[40px] rounded-md hover:border-blue-400 p-2" type='date'  name='date'></input>
+     <input className="w-[380px] outline-none border border-slate-400 h-[40px] rounded-md hover:border-blue-400 p-2" type='date'  name='date'/>
 </div>
 
 
@@ -272,13 +268,13 @@ setLocaion(event.target.value)
 <label className="label">
     <span className="label-text font-semibold text-black text-xl">Booking Form</span></label>
     <p className="text-sm">Create Your Meeting link</p>
-     <input className="w-[380px] outline-none border border-slate-400 h-[40px] rounded-md hover:border-blue-400 p-2" type='text'  name='meetingLink'></input>
+     <input className="w-[380px] outline-none border border-slate-400 h-[40px] rounded-md hover:border-blue-400 p-2" type='text'  name='meetingLink'/>
      {
-      location==='zoom'?<a className="btn bg-blue-500 hover:bg-blue-400 hover:text-white" href="https://zoom.us/" target="blank">Create Zoom Link</a> :''   
+      location==='zoom'?<a className="btn bg-blue-500 hover:bg-blue-400 hover:text-white" href="https://zoom.us/" target="_blank">Create Zoom Link</a> :''   
      }
 
 {
-      location==='meet'?<a className="btn bg-blue-500 hover:bg-blue-400 hover:text-white" href="https://meet.google.com/ " target="blank" >Create Meet Link</a> :''   
+      location==='meet'?<a className="btn bg-blue-500 hover:bg-blue-400 hover:text-white" href="https://meet.google.com/ " target="_blank" >Create Meet Link</a> :''   
      }
      </div>
     
