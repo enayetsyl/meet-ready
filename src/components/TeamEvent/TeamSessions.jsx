@@ -12,7 +12,7 @@ const TeamSessions = () => {
     const formHandler=(e)=>{
     e.preventDefault()
    
-    const eventTitle=e.target.title.value
+    // const eventTitle=e.target.title.value
     const eventSlug=e.target.slug.value
     const eventDuration=e.target.duration.value
     const eventDay=e.target.days.value
@@ -22,7 +22,7 @@ const TeamSessions = () => {
     const meetingLink=e.target.meetingLink.value
     const eventLocation=e.target.location.value
     
-const teamEventInfo={eventTitle,eventSlug,eventDuration,eventDays,fromTime,toTime,eventdate,meetingLink,eventLocation}
+const teamEventInfo={eventSlug,eventDuration,eventDays,fromTime,toTime,eventdate,meetingLink,eventLocation}
 
 
 
