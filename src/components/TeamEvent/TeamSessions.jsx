@@ -9,30 +9,30 @@ const TeamSessions = () => {
     const[location,setLocaion]=useState('')
 
 
-    const formHandler=(e)=>{
-    e.preventDefault()
+//     const formHandler=(e)=>{
+//     e.preventDefault()
    
-    // const eventTitle=e.target.title.value
-    const eventSlug=e.target.slug.value
-    const eventDuration=e.target.duration.value
-    const eventDay=e.target.days.value
-    const fromTime=e.target.fromTime.value
-    const toTime=e.target.toTime.value
-    const eventdate=e.target.date.value
-    const meetingLink=e.target.meetingLink.value
-    const eventLocation=e.target.location.value
+//     const eventTitle=e.target.title.value
+//     const eventSlug=e.target.slug.value
+//     const eventDuration=e.target.duration.value
+//     const eventDay=e.target.days.value
+//     const fromTime=e.target.fromTime.value
+//     const toTime=e.target.toTime.value
+//     const eventdate=e.target.date.value
+//     const meetingLink=e.target.meetingLink.value
+//     const eventLocation=e.target.location.value
     
-const teamEventInfo={eventSlug,eventDuration,eventDays,fromTime,toTime,eventdate,meetingLink,eventLocation}
+// const teamEventInfo={eventSlug,eventDuration,eventDays,fromTime,toTime,eventdate,meetingLink,eventLocation}
 
 
 
-console.log('Team sessions Info',teamEventInfo)
+// console.log('Team sessions Info',teamEventInfo)
 
 
 
 
 
-    }
+//     }
     
     
     
@@ -45,7 +45,7 @@ console.log('Team sessions Info',teamEventInfo)
 
     return (
         <div className="my-10">
-             <form onSubmit={formHandler}>
+             <form >
             <div className='spacey-y-10'>
                {/* EVENT TITLE */}
 
