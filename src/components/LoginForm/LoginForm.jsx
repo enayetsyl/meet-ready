@@ -4,10 +4,12 @@ import React from 'react'
 import logo from "@/assets/meetReadyLogo.png"
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { signIn } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 
 const LoginForm = () => {
   const router = useRouter()
+  const session = useSession()
+  console.log('session in login form', session)
 
   const handleSubmit = async(e) => {
     e.preventDefault()
@@ -22,11 +24,11 @@ const LoginForm = () => {
         password,
       })
   
-      console.log(response)
       if (response?.error){
         console.log(response.error)
       }
       // router.replace('/dashboard')
+      // router.push('/client')
     } catch (error) {
       console.error("Error during sign-in:", error);
     }

@@ -15,6 +15,7 @@ import { usePathname } from "next/navigation";
 import userLogo from "@/assets/userLogo.png";
 import mobileLogo from "@/assets/meetReadyLogoMobile.png";
 import { useState } from "react";
+import { signOut } from "next-auth/react";
 
 const DashNav = () => {
   
@@ -125,7 +126,7 @@ const DashNav = () => {
           ></label>
           <ul className="menu p-4 space-y-2 w-72 min-h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
-            <Link href={"/dashboard"}>
+            <Link href={"/"}>
               <Image src={logo} width={"200"} height={"150"} alt="logo" />
             </Link>
 
@@ -157,8 +158,10 @@ const DashNav = () => {
             </Link>
 
             <hr />
-            <button className="glass btn bg-red-600 text-white btn-sm hover:bg-red-800">
-              <FaArrowRightFromBracket /> {isClicked ? "" : "Log Out"}
+            <button 
+            onClick={() => signOut()}
+            className="glass btn bg-red-600 text-white btn-sm hover:bg-red-800">
+              <FaArrowRightFromBracket /> Logout
             </button>
           </ul>
         </div>

@@ -12,10 +12,10 @@ import { signOut } from "next-auth/react";
 import Logout from "../Logout/Logout";
 
 const Navbar = async () => {
-  // const user = false;
   const session = await getServerSession(authOptions)
-  const user = session?.user;
-  console.log(user)
+  console.log('user in navbar', session)
+  const user = session?.user
+  
   return (
     <div className="navbar bg-purple-200  text-black">
       {/* navbar start logo */}
@@ -39,7 +39,7 @@ const Navbar = async () => {
           />
         </div>
 
-        {/* user avatar */}
+        user avatar
         {user ? (
           <>
             <div className="dropdown dropdown-end hidden lg:flex z-50">
@@ -124,6 +124,7 @@ const Navbar = async () => {
               <li className="border-b">
                 <Link href={"/"}>Home</Link>
               </li>
+
               {user ? (
                 <>
                   <li className="border rounded-lg my-3">
@@ -157,6 +158,7 @@ const Navbar = async () => {
                   </li>
                 </>
               )}
+
             </ul>
           </div>
         </div>

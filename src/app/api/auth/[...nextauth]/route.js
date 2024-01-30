@@ -1,80 +1,103 @@
-
+import CredentialsProvider from "next-auth/providers/credentials"
 import NextAuth from "next-auth/next";
-import CredentialsProvider from "next-auth/providers/credentials";
-import GoogleProvider from "next-auth/providers/google"
-import bcrypt from "bcrypt";
-import connect from "@/utils/db";
+import GoogleProvider from 'next-auth/providers/google'
 import User from "@/models/User";
-import { NextResponse } from "next/server";
+import connect from "@/utils/db";
+import bcrypt from "bcrypt"
+
 
 export const authOptions = {
-  providers: [
+  providers:[
+    GoogleProvider({
+      clientId:process.env.GOOGLE_CLIENT_ID,
+      clientSecret:process.env.GOOGLE_CLIENT_SECRET,
+    }),
     CredentialsProvider({
-      name: "credentials",
+      name: "credentials", 
       credentials: {},
-
-      async authorize(credentials) {
-        const { email, password } = credentials;
+      async authorize(credentials){
+        const { email, password } = credentials
         try {
-          await connect();
-          const user = await User.findOne({ email });
-       
-          if (!user) {
-            return null;
+          await connect()
+          const user = await User.findOne({email})
+
+          if(!user){
+            return null
           }
 
           const passwordsMatch = await bcrypt.compare(password, user.password);
-          console.log(passwordsMatch)
+          
+          
           if (!passwordsMatch) {
             return null;
           }
-          console.log('user',user)
-          console.log(user.name)
-          return {name: user.name}
+
+          return user;
 
         } catch (error) {
-          console.log("Error: ", error);
-          return null
+          console.log(error)
         }
-      },
-    }),GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET
-    }),
+      }
+    })
   ],
   callbacks: {
     async signIn({user, account}){
       if(account.provider === 'google'){
-        const { name, email } = user;
+        const {name, email} = user
+        console.log(name, email)
         try {
           await connect()
-          const userExists = await User.findOne({email})
-
-          if(!userExists){
-            const newUser = new User({
-              name, email  })
-            await newUser.save()
-            return user
+          const userExist = await User.findOne({email})
+          // const password = 123456
+          // console.log(userExist)
+          if(!userExist){
+            const res = await fetch('http://localhost:3000/api/register', {
+              method:"POST",
+              headers: {
+                "Content-Type": 'application/json'
+              },
+              body: JSON.stringify({
+                name, email
+               
+              })
+            })
+            console.log(res)
+            if(res.ok){
+              return user;
+            }
           }
-        } catch (error) {
-          console.log(error)
-          return new NextResponse(error, {status: 500})
-        }
 
+          return user
+        
+        } catch (error) {
+        console.log(error)   
+        }
+       
       }
+      if(account.provider === 'credentials'){
+        return user
+      }
+    },
+    async jwt({token, user}){
+    
+       return token
+    }, 
+    async session({session, token}){
+      
+          session.user.name = token.name
+          session.user.email = token.email
+      return session
     }
-  },  
+  },
   session: {
-    strategy: "jwt",
+    strategy: "jwt"
   },
   secret: process.env.NEXTAUTH_SECRET,
-  pages: {
-    signIn: "/",
-  },
-};
+  pages:{
+    signIn: "/login"
+  }
+}
 
-const handler = NextAuth(authOptions);
+const handler = NextAuth(authOptions)
 
-export { handler as GET, handler as POST };
-
-
+export {handler as GET, handler as POST}
